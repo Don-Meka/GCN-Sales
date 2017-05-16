@@ -1,0 +1,29 @@
+Console Sales Total
+
+
+Gamecube		Playstation 2		Xbox				
+N.A. 	12.55		53.65			15.77
+Eur 	4.44		52.28			7.17
+Jap 	4.04		23.18			0.53
+Other 	0.71		25.57			1.18
+Total	21.74		157.68			24.65
+
+
+> sum(GCN$Sales.N.A, na.rm=TRUE)
+[1] 133.53
+> sum(GCN$Sales.Eur, na.rm=TRUE)
+[1] 38.71
+> sum(GCN$Sales.Jap, na.rm=TRUE)
+[1] 22.03
+> sum(GCN$Sales.Other, na.rm=TRUE)
+[1] 5.18
+> sum(GCN$Sales.Total, na.rm=TRUE)
+[1] 199.87
+
+
+Attach rate 
+N.A. = 10.64
+Eur = 9.72
+Jap = 5.45
+Other = 7.30
+Total = 9.19

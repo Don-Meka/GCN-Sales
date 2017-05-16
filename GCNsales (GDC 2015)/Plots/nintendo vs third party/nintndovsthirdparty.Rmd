@@ -1,0 +1,67 @@
+---
+title: "poopy"
+author: "the don"
+date: "Thursday, February 12, 2015"
+output: word_document
+---
+```{r}
+library(dplyr)
+library(ggplot2)
+library(RColorBrewer)
+library(utils)
+GCN2 <- read.csv("GCN2.csv")
+```
+
+```{r, echo = FALSE}
+tp <- GCN2[which(GCN2$Publisher != "Nintendo"), ]
+nin <- GCN2[which(GCN2$Publisher == "Nintendo"), ]
+tpx <- tp[which(tp$Exclusivity == "Yes"), ]
+tpm <- tp[which(tp$Exclusivity == "No"), ]
+```
+
+nintendo metacritic score vs third party metacritic score
+```{r}
+t.test(x = nin$Metacritic.Score, y = tp$Metacritic.Score, na.rm=T)
+```
+
+
+nintendo sales vs third pary sales
+```{r}
+t.test(x = nin$Sales.Total, y = tp$Sales.Total)
+```
+
+third party exclusive sales vs multiplatform
+```{r}
+t.test(x = tpx$Sales.Total, y = tpm$Sales.Total)
+```
+
+nintendo vs third party metacritic score
+```{r}
+t.test(x = nin$Metacritic.Score, y = tp$Metacritic.Score, na.rm=T)
+```
+
+nintendo vs thid party eclusive sales
+```{r}
+t.test(x = nin$Sales.Total, y = tpx$Sales.Total)
+```
+
+
+years plot
+```{r, echo=FALSE}
+a <- c(as.vector(prop.table(table(GCN2[which(GCN2$Publisher == "Nintendo"), "Release.Year"]))), 0)
+b <- c(as.vector(prop.table(table(GCN2[which(GCN2$Publisher != "Nintendo" & GCN2$Exclusivity == "Yes"), "Release.Year" ]))), 0)
+c <- as.vector(prop.table(table(GCN2[which(GCN2$Publisher != "Nintendo" & GCN2$Exclusivity == "No"), "Release.Year" ])))
+props <- c(a, b, c)
+years <- (2001:2007)
+groups <- rep("Nintendo", times = 7)
+groups <- c(groups, rep("Third Party (Ex)", times = 7))
+groups <- c(groups, rep("Third Party (MP)", times = 7))
+df <- data.frame(cbind(years, (as.numeric(as.character(props))), groups))
+
+ggplot(df, aes(as.factor(years), props, fill = groups)) +
+  geom_bar(stat = "identity") +
+  facet_grid(. ~ groups) +
+  theme(axis.text.x  = element_text(angle= -90, vjust=0.5, size=10)) +
+  labs(x = "Year", y = "Proportion of Games") + 
+  guides(fill = FALSE)
+```

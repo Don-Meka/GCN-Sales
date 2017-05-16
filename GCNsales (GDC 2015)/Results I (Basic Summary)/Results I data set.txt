@@ -1,0 +1,118 @@
+##Redo later
+
+> str(GCN)
+'data.frame':	643 obs. of  13 variables:
+ $ Game            : Factor w/ 643 levels "1080 Avalanche",..: 1 2 3 4 5 6 7 8 9 10 ...
+ $ Publisher       : Factor w/ 65 levels "3DO","Acclaim Entertainment",..: 44 2 16 61 2 45 2 2 2 49 ...
+ $ Genre           : Factor w/ 14 levels "Action/Adventure",..: 13 9 13 9 13 11 13 13 13 14 ...
+ $ Release.Year    : int  2003 2002 2002 2002 2002 2004 2001 2002 2003 2004 ...
+ $ ESRB.Rating     : Factor w/ 4 levels "E","E10","M",..: 1 1 1 1 4 4 1 1 1 1 ...
+ $ Multiplayer     : int  4 2 4 2 2 4 4 4 4 2 ...
+ $ Metacritic.Score: int  73 52 78 56 88 78 66 83 80 59 ...
+ $ Exclusivity     : Factor w/ 2 levels "No","Yes": 2 1 1 1 1 1 1 1 1 2 ...
+ $ Sales.N.A.      : num  NA 0.09 0.04 0.11 0.04 0.07 0.17 0.12 0.06 0.04 ...
+ $ Sales.Eur       : num  NA 0.02 0.01 0.03 0.01 0.02 0.04 0.03 0.02 0.01 ...
+ $ Sales.Jap       : num  NA NA NA NA NA NA NA NA NA NA ...
+ $ Sales.Other     : num  NA NA NA NA NA NA 0.01 NA NA NA ...
+ $ Sales.Total     : num  NA 0.11 0.05 0.14 0.06 0.09 0.22 0.15 0.08 0.06 ...
+> 
+ 
+> summary(GCN)
+                               Game                            Publisher  
+ 1080 Avalanche                  :  1   Electronic Arts             : 92  
+ 18 Wheeler: American Pro Trucker:  1   Nintendo                    : 56  
+ 2002 FIFA World Cup             :  1   THQ                         : 48  
+ 4x4 EVO 2                       :  1   Activision                  : 47  
+ Aggressive Inline               :  1   Konami Digital Entertainment: 41  
+ Alien Hominid                   :  1   Ubisoft                     : 40  
+ (Other)                         :637   (Other)                     :319  
+              Genre      Release.Year  ESRB.Rating  Multiplayer    Metacritic.Score
+ Sports          :137   Min.   :2001   E   :304    Min.   :1.000   Min.   :23.00   
+ Action/Adventure:135   1st Qu.:2002   E10 : 34    1st Qu.:1.000   1st Qu.:61.00   
+ Platformer      : 80   Median :2003   M   : 42    Median :2.000   Median :70.00   
+ Racing          : 75   Mean   :2003   T   :207    Mean   :2.407   Mean   :69.08   
+ Shooter         : 59   3rd Qu.:2005   NA's: 56    3rd Qu.:4.000   3rd Qu.:79.00   
+ Fighting        : 43   Max.   :2007               Max.   :4.000   Max.   :97.00   
+ (Other)         :114                                              NA's   :127     
+ Exclusivity   Sales.N.A.       Sales.Eur         Sales.Jap       Sales.Other    
+ No :491     Min.   :0.0100   Min.   :0.01000   Min.   :0.0100   Min.   :0.0100  
+ Yes:152     1st Qu.:0.0500   1st Qu.:0.02000   1st Qu.:0.0600   1st Qu.:0.0100  
+             Median :0.1200   Median :0.03000   Median :0.1200   Median :0.0100  
+             Mean   :0.2468   Mean   :0.07884   Mean   :0.2475   Mean   :0.0221  
+             3rd Qu.:0.2700   3rd Qu.:0.08000   3rd Qu.:0.3600   3rd Qu.:0.0200  
+             Max.   :4.4100   Max.   :1.77000   Max.   :1.3900   Max.   :0.2200  
+             NA's   :102      NA's   :152       NA's   :554      NA's   :409     
+  Sales.Total    
+ Min.   :0.0100  
+ 1st Qu.:0.0700  
+ Median :0.1500  
+ Mean   :0.3563  
+ 3rd Qu.:0.3500  
+ Max.   :7.0700  
+ NA's   :82      
+ ------------------------------------------------------------------------
+ > str(GCN2)
+ 'data.frame':	643 obs. of  18 variables:
+  $ Game            : Factor w/ 643 levels "1080 Avalanche",..: 1 2 3 4 5 6 7 8 9 10 ...
+  $ Publisher       : Factor w/ 65 levels "3DO","Acclaim Entertainment",..: 44 2 16 61 2 45 2 2 2 49 ...
+  $ Publisher2      : Factor w/ 15 levels "Acclaim Entertainment",..: 9 1 5 15 1 10 1 1 1 11 ...
+  $ Genre           : Factor w/ 14 levels "Action/Adventure",..: 13 9 13 9 13 11 13 13 13 14 ...
+  $ Genre2          : Factor w/ 8 levels "Action/Adventure",..: 8 5 8 5 8 7 8 8 8 3 ...
+  $ Release.Year    : int  2003 2002 2002 2002 2002 2004 2001 2002 2003 2004 ...
+  $ Release.Year2   : Factor w/ 4 levels "2001/2","2003",..: 2 1 1 1 1 3 1 1 2 3 ...
+  $ ESRB.Rating     : Factor w/ 4 levels "E","E10","M",..: 1 1 1 1 4 4 1 1 1 1 ...
+  $ ESRB.Rating2    : Factor w/ 2 levels "E/E10","T/M": 1 1 1 1 2 2 1 1 1 1 ...
+  $ Multiplayer     : int  4 2 4 2 2 4 4 4 4 2 ...
+  $ Multiplayer2    : int  4 2 4 2 2 4 4 4 4 2 ...
+  $ Metacritic.Score: int  73 52 78 56 88 78 66 83 80 59 ...
+  $ Exclusivity     : Factor w/ 2 levels "No","Yes": 2 1 1 1 1 1 1 1 1 2 ...
+  $ Sales.N.A.      : num  NA 0.09 0.04 0.11 0.04 0.07 0.17 0.12 0.06 0.04 ...
+  $ Sales.Eur       : num  NA 0.02 0.01 0.03 0.01 0.02 0.04 0.03 0.02 0.01 ...
+  $ Sales.Jap       : num  NA NA NA NA NA NA NA NA NA NA ...
+  $ Sales.Other     : num  NA NA NA NA NA NA 0.01 NA NA NA ...
+ $ Sales.Total     : num  NA 0.11 0.05 0.14 0.06 0.09 0.22 0.15 0.08 0.06 ...
+ 
+ 
+ > summary(GCN2)
+                                Game                            Publisher  
+  1080 Avalanche                  :  1   Electronic Arts             : 92  
+  18 Wheeler: American Pro Trucker:  1   Nintendo                    : 56  
+  2002 FIFA World Cup             :  1   THQ                         : 48  
+  4x4 EVO 2                       :  1   Activision                  : 47  
+  Aggressive Inline               :  1   Konami Digital Entertainment: 41  
+  Alien Hominid                   :  1   Ubisoft                     : 40  
+  (Other)                         :637   (Other)                     :319  
+                         Publisher2               Genre                  Genre2   
+  Other                       :127   Sports          :137   Sports          :137  
+  Electronic Arts             : 92   Action/Adventure:136   Action/Adventure:136  
+  Nintendo                    : 56   Platformer      : 80   Platformer      : 80  
+  THQ                         : 48   Racing          : 75   Other           : 79  
+  Activision                  : 47   Shooter         : 61   Racing          : 75  
+  Konami Digital Entertainment: 41   Fighting        : 43   Shooter         : 61  
+  (Other)                     :232   (Other)         :111   (Other)         : 75  
+   Release.Year   Release.Year2 ESRB.Rating ESRB.Rating2  Multiplayer     Multiplayer2  
+  Min.   :2001   2001/2  :193   E   :304    E/E10:338    Min.   :1.000   Min.   :1.000  
+  1st Qu.:2002   2003    :188   E10 : 34    T/M  :249    1st Qu.:1.000   1st Qu.:1.000  
+  Median :2003   2004    :100   M   : 42    NA's : 56    Median :2.000   Median :2.000  
+  Mean   :2003   6/7/2005:162   T   :207                 Mean   :2.407   Mean   :2.406  
+  3rd Qu.:2005                  NA's: 56                 3rd Qu.:4.000   3rd Qu.:4.000  
+  Max.   :2007                                           Max.   :4.000   Max.   :4.000  
+                                                                                        
+  Metacritic.Score Exclusivity   Sales.N.A.       Sales.Eur         Sales.Jap     
+  Min.   :23.00    No :491     Min.   :0.0100   Min.   :0.01000   Min.   :0.0100  
+  1st Qu.:61.00    Yes:152     1st Qu.:0.0500   1st Qu.:0.02000   1st Qu.:0.0600  
+  Median :70.00                Median :0.1200   Median :0.03000   Median :0.1200  
+  Mean   :69.08                Mean   :0.2468   Mean   :0.07884   Mean   :0.2475  
+  3rd Qu.:79.00                3rd Qu.:0.2700   3rd Qu.:0.08000   3rd Qu.:0.3600  
+  Max.   :97.00                Max.   :4.4100   Max.   :1.77000   Max.   :1.3900  
+  NA's   :127                  NA's   :102      NA's   :152       NA's   :554     
+   Sales.Other      Sales.Total    
+  Min.   :0.0100   Min.   :0.0100  
+  1st Qu.:0.0100   1st Qu.:0.0700  
+  Median :0.0100   Median :0.1500  
+  Mean   :0.0221   Mean   :0.3563  
+  3rd Qu.:0.0200   3rd Qu.:0.3500  
+  Max.   :0.2200   Max.   :7.0700  
+  NA's   :409      NA's   :82      
+> 
+ 

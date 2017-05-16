@@ -1,0 +1,3 @@
+> summary(GCN$Metacritic.Score)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  23.00   61.00   70.00   69.08   79.00   97.00     127 

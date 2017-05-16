@@ -1,0 +1,11 @@
+##Metacritic Score by Sales
+> cor(GCN2$Metacritic.Score, GCN2$Sales.N.A., use = "complete.obs")
+[1] 0.3319902
+> cor(GCN2$Metacritic.Score, GCN2$Sales.Eur, use = "complete.obs")
+[1] 0.3189632
+> cor(GCN2$Metacritic.Score, GCN2$Sales.Jap, use = "complete.obs")
+[1] 0.2504536
+> cor(GCN2$Metacritic.Score, GCN2$Sales.Other, use = "complete.obs")
+[1] 0.2963166
+> cor(GCN2$Metacritic.Score, GCN2$Sales.Total, use = "complete.obs")
+[1] 0.3269084

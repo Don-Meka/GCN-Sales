@@ -1,0 +1,181 @@
+##Compare Publisher to Metacritic Score and Sales
+> GCN2pub <- split(GCN2, GCN2$Publisher2)
+> sapply(GCN2pub, function(x) colMeans(x[, c("Metacritic.Score", "Sales.N.A.", "Sales.Eur", "Sales.Jap", "Sales.Other", "Sales.Total")], na.rm=TRUE))
+                 Acclaim Entertainment  Activision       Atari      Capcom Electronic Arts
+Metacritic.Score           66.54166667 71.00000000 64.43750000 71.10526316     77.40909091
+Sales.N.A.                  0.11375000  0.22456522  0.16500000  0.20368421      0.23355556
+Sales.Eur                   0.03285714  0.06065217  0.04928571  0.08388889      0.06822222
+Sales.Jap                   0.02000000  0.02000000  0.02000000  0.23000000      0.01000000
+Sales.Other                 0.01000000  0.01500000  0.01250000  0.03166667      0.01327273
+Sales.Total                 0.14708333  0.29391304  0.21500000  0.35631579      0.31066667
+                 Konami Digital Entertainment Midway Games Namco Bandai Games    Nintendo
+Metacritic.Score                  56.95238095        70.12        65.73913043 77.53061224
+Sales.N.A.                         0.09947368         0.10         0.18478261  0.96957447
+Sales.Eur                          0.03200000         0.03         0.05434783  0.29239130
+Sales.Jap                          0.07000000          NaN         0.13444444  0.39418605
+Sales.Other                        0.01250000         0.01         0.02200000  0.04822222
+Sales.Total                        0.11884615         0.13         0.24750000  1.53117647
+                       Other        Sega Take-Two Interactive         THQ     Ubisoft
+Metacritic.Score 63.35526316 71.60000000          60.90909091 63.87804878 65.97222222
+Sales.N.A.        0.12247059  0.33677419           0.05571429  0.23083333  0.09216216
+Sales.Eur         0.04716418  0.13750000           0.02000000  0.06000000  0.02718750
+Sales.Jap         0.18333333  0.09000000                  NaN         NaN         NaN
+Sales.Other       0.02058824  0.03166667                  NaN  0.01275862  0.01142857
+Sales.Total       0.17215909  0.47000000           0.07071429  0.29708333  0.11918919
+                 Vivendi Games
+Metacritic.Score   66.29411765
+Sales.N.A.          0.16066667
+Sales.Eur           0.04200000
+Sales.Jap           0.06000000
+Sales.Other         0.01333333
+Sales.Total         0.21200000
+
+## ANOVA
+
+> oneway.test(GCN2$Metacritic.Score ~ GCN2$Publisher2, var.equal = TRUE)
+
+	One-way analysis of means
+
+data:  GCN2$Metacritic.Score and GCN2$Publisher2
+F = 9.1809, num df = 14, denom df = 501, p-value < 2.2e-16
+
+> oneway.test(GCN2$Sales.N.A ~ GCN2$Publisher2, var.equal = TRUE)
+
+	One-way analysis of means
+
+data:  GCN2$Sales.N.A and GCN2$Publisher2
+F = 15.9257, num df = 14, denom df = 526, p-value < 2.2e-16
+
+> oneway.test(GCN2$Sales.Eur ~ GCN2$Publisher2, var.equal = TRUE)
+
+	One-way analysis of means
+
+data:  GCN2$Sales.Eur and GCN2$Publisher2
+F = 10.5188, num df = 14, denom df = 476, p-value < 2.2e-16
+
+
+
+
+-----
+##Compare Publisher to Genre
+> table(GCN2$Publisher2, GCN2$Genre2)
+                              
+                                ActionAdventure Fighting Other Platformer Racing  RolePlaying Shooter Sports
+  Acclaim Entertainment                       0        2     2          1     11            0       1      8
+  Activision                                 12        2     2          6      3            4       5     13
+  Atari                                       4        5     1          2      3            1       2      3
+  Capcom                                     11        1     1          2      1            1       2      0
+  Electronic Arts                            12        3     6          2     13            1      10     45
+  Konami Digital Entertainment                5        2     4          4      1            0       0     25
+  Midway Games                                7        2     3          3      3            0       0      9
+  Namco Bandai Games                          4        9     8          3      4            4       2      1
+  Nintendo                                   12        2    18          3      4            7       3      6
+  Other                                      27        8    20         16     14            6      25     11
+  Sega                                        2        1     7          6      1            4       1     11
+  Take-Two Interactive                        6        0     2          4      1            0       1      2
+  THQ                                        16        4     2         18      5            1       1      1
+  Ubisoft                                    14        1     3          6      6            3       6      1
+  Vivendi Games                               4        1     0          4      5            0       2      1
+> 
+ -----
+ ##Compare Publisher to Release Year
+ > table(GCN2$Publisher2, GCN2$Release.Year)
+                               
+                                2001 2002 2003 2004 2005 2006 2007
+   Acclaim Entertainment           5   10    9    1    0    0    0
+   Activision                      1   12    6    9   16    3    0
+   Atari                           0    6    8    5    1    0    1
+   Capcom                          0    3    9    3    3    1    0
+   Electronic Arts                 4   22   21   19   19    6    1
+   Konami Digital Entertainment    0   18    9    7    6    1    0
+   Midway Games                    1   11    7    1    3    4    0
+   Namco Bandai Games              0    7   11    4    8    5    0
+   Nintendo                        5   11   16   10   11    2    0
+   Other                           2   28   45   23   20    8    1
+   Sega                            2   13    7    3    6    2    0
+   Take-Two Interactive            0    6    6    2    1    1    0
+   THQ                             0   12   11    9    7    8    1
+   Ubisoft                         2    9   15    3    7    2    2
+   Vivendi Games                   0    3    8    1    3    2    0
+ -----
+ ##Compare Publisher to Release Year2
+ > table(GCN2$Publisher2, GCN2$Release.Year2)
+                               
+                                2001/2 2003 2004 6/7/2005
+   Acclaim Entertainment            15    9    1        0
+   Activision                       13    6    9       19
+   Atari                             6    8    5        2
+   Capcom                            3    9    3        4
+   Electronic Arts                  26   21   19       26
+   Konami Digital Entertainment     18    9    7        7
+   Midway Games                     12    7    1        7
+   Namco Bandai Games                7   11    4       13
+   Nintendo                         16   16   10       13
+   Other                            30   45   23       29
+   Sega                             15    7    3        8
+   Take-Two Interactive              6    6    2        2
+   THQ                              12   11    9       16
+   Ubisoft                          11   15    3       11
+   Vivendi Games                     3    8    1        5
+ -----
+ ##Compare Publisher to ESRB
+ > table(GCN2$Publisher2, GCN2$ESRB.Rating)
+                               
+                                 E E10  M  T
+   Acclaim Entertainment        13   0  2 10
+   Activision                   10   4  3 30
+   Atari                        10   0  0 11
+   Capcom                        7   0  7  5
+   Electronic Arts              59   3  4 26
+   Konami Digital Entertainment 14   2  1  7
+   Midway Games                 12   3  4  8
+   Namco Bandai Games           11   1  0 14
+   Nintendo                     34   3  2 12
+   Other                        51   5  9 40
+   Sega                         22   1  1  7
+   Take-Two Interactive          5   1  1  8
+   THQ                          32   5  1 10
+   Ubisoft                      16   3  6 14
+   Vivendi Games                 8   3  1  5
+ -----
+ ##Compare Publisher to ESRB2
+ > table(GCN2$Publisher2, GCN2$ESRB.Rating2)
+                               
+                                E/E10 T/M
+   Acclaim Entertainment           13  12
+   Activision                      14  33
+   Atari                           10  11
+   Capcom                           7  12
+   Electronic Arts                 62  30
+   Konami Digital Entertainment    16   8
+   Midway Games                    15  12
+   Namco Bandai Games              12  14
+   Nintendo                        37  14
+   Other                           56  49
+   Sega                            23   8
+   Take-Two Interactive             6   9
+   THQ                             37  11
+   Ubisoft                         19  20
+   Vivendi Games                   11   6
+> 
+-----
+##Compare Publiser to Multiplayer
+> table(GCN2$Publisher2, GCN2$Multiplayer2)
+                              
+                                1  2  4
+  Acclaim Entertainment         1 11 13
+  Activision                   17 23  7
+  Atari                         6  7  8
+  Capcom                       14  3  2
+  Electronic Arts              10 30 52
+  Konami Digital Entertainment  4 20 17
+  Midway Games                  4  8 15
+  Namco Bandai Games            7 17 11
+  Nintendo                     23  5 27
+  Other                        53 39 35
+  Sega                          7 10 16
+  Take-Two Interactive          8  3  5
+  THQ                          24 11 13
+  Ubisoft                      21 14  5
+  Vivendi Games                 6  4  7
+> 

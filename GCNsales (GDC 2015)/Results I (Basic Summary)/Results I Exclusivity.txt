@@ -1,0 +1,3 @@
+> summary(GCN2$Exclusivity)
+ No Yes 
+490 153 

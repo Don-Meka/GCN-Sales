@@ -1,0 +1,120 @@
+> GCN2mp <- split(GCN2, GCN2$Multiplayer2)
+> sapply(GCN2mp, function(x) colMeans(x[, c("Metacritic.Score", "Sales.N.A.", "Sales.Eur", "Sales.Jap", "Sales.Other", "Sales.Total")], na.rm=TRUE))
+                           1           2           4
+Metacritic.Score 67.17469880 68.24358974 71.38144330
+Sales.N.A.        0.26740113  0.20563636  0.26266332
+Sales.Eur         0.08726708  0.06600000  0.08200000
+Sales.Jap         0.24129032  0.12869565  0.33114286
+Sales.Other       0.02480519  0.01779412  0.02314607
+Sales.Total       0.39209945  0.27485714  0.39414634
+
+
+
+## ANOVA tests
+
+> oneway.test(GCN2$Metacritic.Score ~ GCN2$Multiplayer2, var.equal = TRUE)
+
+	One-way analysis of means
+
+data:  GCN2$Metacritic.Score and GCN2$Multiplayer2
+F = 4.9636, num df = 2, denom df = 513, p-value = 0.007327
+-----
+> oneway.test(GCN2$Sales.N.A. ~ GCN2$Multiplayer2, var.equal = TRUE)
+
+	One-way analysis of means
+
+data:  GCN2$Sales.N.A. and GCN2$Multiplayer2
+F = 1.1099, num df = 2, denom df = 538, p-value = 0.3304
+-----
+> oneway.test(GCN2$Sales.Eur ~ GCN2$Multiplayer2, var.equal = TRUE)
+
+	One-way analysis of means
+
+data:  GCN2$Sales.Eur and GCN2$Multiplayer2
+F = 0.8494, num df = 2, denom df = 488, p-value = 0.4283
+-----
+> oneway.test(GCN2$Sales.Jap ~ GCN2$Multiplayer2, var.equal = TRUE)
+
+	One-way analysis of means
+
+data:  GCN2$Sales.Jap and GCN2$Multiplayer2
+F = 4.165, num df = 2, denom df = 86, p-value = 0.01877
+-----
+> oneway.test(GCN2$Sales.Other ~ GCN2$Multiplayer2, var.equal = TRUE)
+
+	One-way analysis of means
+
+data:  GCN2$Sales.Other and GCN2$Multiplayer2
+F = 1.313, num df = 2, denom df = 231, p-value = 0.271
+-----
+> oneway.test(GCN2$Sales.Total ~ GCN2$Multiplayer2, var.equal = TRUE)
+
+	One-way analysis of means
+
+data:  GCN2$Sales.Total and GCN2$Multiplayer2
+F = 1.8069, num df = 2, denom df = 558, p-value = 0.1651
+
+
+
+////////
+> one <- GCN2[which(GCN2$Multiplayer2 == 1), c("Metacritic.Score")]
+> two <- GCN2[which(GCN2$Multiplayer2 == 2), "Metacritic.Score"]
+> four <- GCN2[which(GCN2$Multiplayer2 == 4), "Metacritic.Score"]
+> mp <- c(two, four)
+
+> t.test(one, two)
+
+	Welch Two Sample t-test
+
+data:  one and two
+t = -0.7157, df = 317.617, p-value = 0.4747
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -4.007100  1.869318
+sample estimates:
+mean of x mean of y 
+ 67.17470  68.24359 
+ 
+ 
+ > t.test(one, four)
+ 
+ 	Welch Two Sample t-test
+ 
+ data:  one and four
+ t = -2.903, df = 334.302, p-value = 0.003941
+ alternative hypothesis: true difference in means is not equal to 0
+ 95 percent confidence interval:
+  -7.057239 -1.356250
+ sample estimates:
+ mean of x mean of y 
+ 67.17470  71.38144 
+ 
+ 
+ 
+ > t.test(two, four)
+ 
+ 	Welch Two Sample t-test
+ 
+ data:  two and four
+ t = -2.3151, df = 336.932, p-value = 0.02121
+ alternative hypothesis: true difference in means is not equal to 0
+ 95 percent confidence interval:
+  -5.8039615 -0.4717456
+ sample estimates:
+ mean of x mean of y 
+  68.24359  71.38144 
+
+
+
+> t.test(one, mp)
+
+	Welch Two Sample t-test
+
+data:  one and mp
+t = -2.1476, df = 291.41, p-value = 0.03257
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -5.3816769 -0.2346398
+sample estimates:
+mean of x mean of y 
+ 67.17470  69.98286 

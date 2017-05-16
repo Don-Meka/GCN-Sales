@@ -1,0 +1,10 @@
+> summary(as.factor(GCN$Multiplayer))
+  1   2   3   4 
+205 204   1 233 
+
+
+(Harry Potter and the Goblet of Fire is the only 3 player game)
+-------------------------------------
+> summary(as.factor(GCN2$Multiplayer2))
+  1   2   4 
+205 205 233 

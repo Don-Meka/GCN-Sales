@@ -1,0 +1,7 @@
+> summary(GCN2$ESRB.Rating)
+   E  E10    M    T NA's 
+ 304   34   42  207   56 
+---------------------------------
+> summary(GCN2$ESRB.Rating2)
+EE10   TM NA's 
+ 338  249   56 

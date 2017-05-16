@@ -1,0 +1,99 @@
+> GCN2esrb <- split(GCN2, GCN2$ESRB.Rating2)
+> sapply(GCN2esrb, function(x) colMeans(x[, c("Metacritic.Score", "Sales.N.A.", "Sales.Eur", "Sales.Jap", "Sales.Other", "Sales.Total")], na.rm=TRUE))
+                        EE10          TM
+Metacritic.Score 68.68402778 69.57894737
+Sales.N.A.        0.28941176  0.19136170
+Sales.Eur         0.08971119  0.06476636
+Sales.Jap         0.34511111  0.16931034
+Sales.Other       0.02442857  0.01891304
+Sales.Total       0.43064935  0.27558824
+
+
+
+> t.test(GCN2esrb$EE10$Metacritic.Score, GCN2esrb$TM$Metacritic.Score)
+
+	Welch Two Sample t-test
+
+data:  GCN2esrb$EE10$Metacritic.Score and GCN2esrb$TM$Metacritic.Score
+t = -0.7566, df = 487.211, p-value = 0.4497
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -3.219016  1.429177
+sample estimates:
+mean of x mean of y 
+ 68.68403  69.57895 
+ 
+ 
+//// 
+ > t.test(GCN2esrb$EE10$Sales.N.A., GCN2esrb$TM$Sales.N.A.)
+ 
+ 	Welch Two Sample t-test
+ 
+ data:  GCN2esrb$EE10$Sales.N.A. and GCN2esrb$TM$Sales.N.A.
+ t = 2.898, df = 453.457, p-value = 0.003938
+ alternative hypothesis: true difference in means is not equal to 0
+ 95 percent confidence interval:
+  0.0315593 0.1645408
+ sample estimates:
+ mean of x mean of y 
+ 0.2894118 0.1913617 
+
+
+////
+> t.test(GCN2esrb$EE10$Sales.Eur, GCN2esrb$TM$Sales.Eur)
+
+	Welch Two Sample t-test
+
+data:  GCN2esrb$EE10$Sales.Eur and GCN2esrb$TM$Sales.Eur
+t = 1.9652, df = 450.993, p-value = 0.05001
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -9.119138e-07  4.989058e-02
+sample estimates:
+ mean of x  mean of y 
+0.08971119 0.06476636
+
+
+////
+> t.test(GCN2esrb$EE10$Sales.Jap, GCN2esrb$TM$Sales.Jap)
+
+	Welch Two Sample t-test
+
+data:  GCN2esrb$EE10$Sales.Jap and GCN2esrb$TM$Sales.Jap
+t = 3.1158, df = 64.021, p-value = 0.002745
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.06308406 0.28851747
+sample estimates:
+mean of x mean of y 
+0.3451111 0.1693103 
+
+
+////
+> t.test(GCN2esrb$EE10$Sales.Other, GCN2esrb$TM$Sales.Other)
+
+	Welch Two Sample t-test
+
+data:  GCN2esrb$EE10$Sales.Other and GCN2esrb$TM$Sales.Other
+t = 1.6892, df = 225.416, p-value = 0.09257
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.0009187092  0.0119497651
+sample estimates:
+ mean of x  mean of y 
+0.02442857 0.01891304 
+
+
+////
+> t.test(GCN2esrb$EE10$Sales.Total, GCN2esrb$TM$Sales.Total)
+
+	Welch Two Sample t-test
+
+data:  GCN2esrb$EE10$Sales.Total and GCN2esrb$TM$Sales.Total
+t = 2.843, df = 448.298, p-value = 0.004673
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.04787279 0.26224944
+sample estimates:
+mean of x mean of y 
+0.4306494 0.2755882 

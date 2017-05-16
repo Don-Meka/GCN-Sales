@@ -1,0 +1,93 @@
+##Split dataset by Exclusivity
+
+> GCNex <- split(GCN2, GCN2$Exclusivity)
+-------------------------------------
+##Mean metacritic score and sales by Exclusivity
+
+> sapply(GCNex, function(x) colMeans(x[, c("Metacritic.Score", "Sales.N.A.", "Sales.Eur", "Sales.Jap", "Sales.Other", "Sales.Total")], na.rm=TRUE))
+                          No         Yes
+Metacritic.Score 68.45614035 71.20512821
+Sales.N.A.        0.17018824  0.52758621
+Sales.Eur         0.05170984  0.17857143
+Sales.Jap         0.07619048  0.30044118
+Sales.Other       0.01471338  0.03727273
+Sales.Total       0.22262673  0.81299213
+
+
+> t.test(ex$Metacritic.Score, mp$Metacritic.Score)
+
+	Welch Two Sample t-test
+
+data:  ex$Metacritic.Score and mp$Metacritic.Score
+t = 1.8931, df = 179.437, p-value = 0.05995
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.1163548  5.6143305
+sample estimates:
+mean of x mean of y 
+ 71.20513  68.45614 
+
+> t.test(ex$Sales.N.A., mp$Sales.N.A.)
+
+	Welch Two Sample t-test
+
+data:  ex$Sales.N.A. and mp$Sales.N.A.
+t = 4.8737, df = 118.97, p-value = 3.416e-06
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.2121940 0.5026019
+sample estimates:
+mean of x mean of y 
+0.5275862 0.1701882 
+
+> t.test(ex$Sales.Eur, mp$Sales.Eur)
+
+	Welch Two Sample t-test
+
+data:  ex$Sales.Eur and mp$Sales.Eur
+t = 4.6649, df = 107.208, p-value = 8.957e-06
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.07295248 0.18077069
+sample estimates:
+ mean of x  mean of y 
+0.17857143 0.05170984 
+
+> t.test(ex$Sales.Jap, mp$Sales.Jap)
+
+	Welch Two Sample t-test
+
+data:  ex$Sales.Jap and mp$Sales.Jap
+t = 5.9744, df = 82.443, p-value = 5.639e-08
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.1495871 0.2989143
+sample estimates:
+ mean of x  mean of y 
+0.30044118 0.07619048 
+
+> t.test(ex$Sales.Other, mp$Sales.Other)
+
+	Welch Two Sample t-test
+
+data:  ex$Sales.Other and mp$Sales.Other
+t = 4.7432, df = 80.586, p-value = 8.958e-06
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.0130954 0.0320233
+sample estimates:
+ mean of x  mean of y 
+0.03727273 0.01471338 
+
+> t.test(ex$Sales.Total, mp$Sales.Total)
+
+	Welch Two Sample t-test
+
+data:  ex$Sales.Total and mp$Sales.Total
+t = 5.2942, df = 129.463, p-value = 4.969e-07
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.3697456 0.8109852
+sample estimates:
+mean of x mean of y 
+0.8129921 0.2226267 

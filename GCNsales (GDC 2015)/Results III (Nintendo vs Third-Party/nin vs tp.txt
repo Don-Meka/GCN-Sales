@@ -1,0 +1,141 @@
+tp <- GCN2[which(GCN2$Publisher != "Nintendo"), ]
+nin <- GCN2[which(GCN2$Publisher == "Nintendo"), ]
+tpx <- tp[which(tp$Exclusivity == "Yes"), ]
+tpm <- tp[which(tp$Exclusivity == "No"), ]
+
+
+-------
+> t.test(x = nin$Metacritic.Score, y = tp$Metacritic.Score, na.rm=T)
+
+	Welch Two Sample t-test
+
+data:  nin$Metacritic.Score and tp$Metacritic.Score
+t = 5.452, df = 62.991, p-value = 8.855e-07
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+  5.915233 12.760553
+sample estimates:
+mean of x mean of y 
+ 77.53061  68.19272 
+ 
+------ 
+ > t.test(x = nin$Sales.N.A., y = tp$Sales.N.A.)
+ 
+ 	Welch Two Sample t-test
+ 
+ data:  nin$Sales.N.A. and tp$Sales.N.A.
+ t = 5.2825, df = 46.394, p-value = 3.318e-06
+ alternative hypothesis: true difference in means is not equal to 0
+ 95 percent confidence interval:
+  0.4899801 1.0930555
+ sample estimates:
+ mean of x mean of y 
+0.9695745 0.1780567 
+
+-----
+> t.test(x = nin$Sales.Eur, y = tp$Sales.Eur)
+
+	Welch Two Sample t-test
+
+data:  nin$Sales.Eur and tp$Sales.Eur
+t = 4.4749, df = 45.483, p-value = 5.081e-05
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.1296053 0.3416492
+sample estimates:
+ mean of x  mean of y 
+0.29239130 0.05676404 
+
+-----
+> t.test(x = nin$Sales.Jap, y = tp$Sales.Jap)
+
+	Welch Two Sample t-test
+
+data:  nin$Sales.Jap and tp$Sales.Jap
+t = 5.6222, df = 52.127, p-value = 7.505e-07
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.1824819 0.3850207
+sample estimates:
+mean of x mean of y 
+0.3941860 0.1104348 
+
+-----
+> t.test(x = nin$Sales.Other, y = tp$Sales.Other)
+
+	Welch Two Sample t-test
+
+data:  nin$Sales.Other and tp$Sales.Other
+t = 4.4288, df = 45.397, p-value = 5.916e-05
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.01761224 0.04698035
+sample estimates:
+ mean of x  mean of y 
+0.04822222 0.01592593 
+
+-----
+> t.test(x = nin$Sales.Total, y = tp$Sales.Total)
+
+	Welch Two Sample t-test
+
+data:  nin$Sales.Total and tp$Sales.Total
+t = 5.6177, df = 50.367, p-value = 8.374e-07
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.8303885 1.7543959
+sample estimates:
+mean of x mean of y 
+1.5311765 0.2387843 
+
+-----##Genre
+
+> prop.table(table(nin$Genre2))
+
+ActionAdventure        Fighting           Other      Platformer 
+     0.21818182      0.03636364      0.32727273      0.05454545 
+         Racing     RolePlaying         Shooter          Sports 
+     0.07272727      0.12727273      0.05454545      0.10909091
+     
+> prop.table(table(tp$Genre2))
+
+ActionAdventure        Fighting           Other      Platformer 
+     0.21088435      0.06972789      0.10374150      0.13095238 
+         Racing     RolePlaying         Shooter          Sports 
+     0.12074830      0.04251701      0.09863946      0.22278912 
+
+-----##Release Year
+> prop.table(table(nin$Release.Year2))
+
+     2002      2003      2004      2005 
+0.2909091 0.2909091 0.1818182 0.2363636 
+> prop.table(table(tp$Release.Year2))
+
+     2002      2003      2004      2005 
+0.3010204 0.2925170 0.1530612 0.2534014 
+
+-----ESRB Rating
+> prop.table(table(nin$ESRB.Rating2))
+
+     EE10        TM 
+0.7254902 0.2745098 
+> prop.table(table(tp$ESRB.Rating2))
+
+     EE10        TM 
+0.5615672 0.4384328 
+
+-----##Multiplayer
+> prop.table(table(nin$Multiplayer2))
+
+         1          2          4 
+0.41818182 0.09090909 0.49090909 
+> prop.table(table(tp$Multiplayer2))
+
+        1         2         4 
+0.3095238 0.3401361 0.3503401 
+
+-----
+> cor(x = tp$Metacritic.Score, y = tp$Sales.Total, use = "complete.obs")
+[1] 0.3145805
+> cor(x = nin$Metacritic.Score, y = nin$Sales.Total, use = "complete.obs")
+[1] 0.4808942

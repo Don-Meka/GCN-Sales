@@ -1,0 +1,148 @@
+tp <- GCN2[which(GCN2$Publisher != "Nintendo"), ]
+nin <- GCN2[which(GCN2$Publisher == "Nintendo"), ]
+tpx <- tp[which(tp$Exclusivity == "Yes"), ]
+tpm <- tp[which(tp$Exclusivity == "No"), ]
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+-----
+> t.test(x = nin$Metacritic.Score, y = tpx$Metacritic.Score)
+
+	Welch Two Sample t-test
+
+data:  nin$Metacritic.Score and tpx$Metacritic.Score
+t = 4.6408, df = 113.934, p-value = 9.342e-06
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+  6.237745 15.529362
+sample estimates:
+mean of x mean of y 
+ 77.53061  66.64706
+ 
+> t.test(x = nin$Sales.N.A., y = tpx$Sales.N.A.)
+
+	Welch Two Sample t-test
+
+data:  nin$Sales.N.A. and tpx$Sales.N.A.
+t = 4.8169, df = 51.972, p-value = 1.303e-05
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.4335058 1.0525997
+sample estimates:
+mean of x mean of y 
+0.9695745 0.2265217 
+
+> t.test(x = nin$Sales.Eur, y = tpx$Sales.Eur)
+
+	Welch Two Sample t-test
+
+data:  nin$Sales.Eur and tpx$Sales.Eur
+t = 3.6358, df = 56.319, p-value = 0.0006016
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.09096714 0.31415445
+sample estimates:
+ mean of x  mean of y 
+0.29239130 0.08983051 
+
+> t.test(x = nin$Sales.Jap, y = tpx$Sales.Jap)
+
+	Welch Two Sample t-test
+
+data:  nin$Sales.Jap and tpx$Sales.Jap
+t = 4.6401, df = 62.396, p-value = 1.835e-05
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.1451517 0.3648204
+sample estimates:
+mean of x mean of y 
+ 0.394186  0.139200 
+
+> t.test(x = nin$Sales.Other, y = tpx$Sales.Other)
+
+	Welch Two Sample t-test
+
+data:  nin$Sales.Other and tpx$Sales.Other
+t = 3.2848, df = 61.849, p-value = 0.001683
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.01031277 0.04238167
+sample estimates:
+ mean of x  mean of y 
+0.04822222 0.02187500 
+
+> t.test(x = nin$Sales.Total, y = tpx$Sales.Total)
+
+	Welch Two Sample t-test
+
+data:  nin$Sales.Total and tpx$Sales.Total
+t = 5.0774, df = 55.989, p-value = 4.538e-06
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.7266258 1.6736219
+sample estimates:
+mean of x mean of y 
+1.5311765 0.3310526 
+
+-----
+> prop.table(table(nin$Genre2))
+
+ActionAdventure        Fighting           Other      Platformer 
+     0.21818182      0.03636364      0.32727273      0.05454545 
+         Racing     RolePlaying         Shooter          Sports 
+     0.07272727      0.12727273      0.05454545      0.10909091 
+> prop.table(table(tpx$Genre2))
+
+ActionAdventure        Fighting           Other      Platformer 
+     0.19387755      0.15306122      0.15306122      0.08163265 
+         Racing     RolePlaying         Shooter          Sports 
+     0.05102041      0.13265306      0.09183673      0.14285714
+
+-----
+> prop.table(table(nin$Release.Year2))
+
+     2002      2003      2004      2005 
+0.2909091 0.2909091 0.1818182 0.2363636 
+> prop.table(table(tpx$Release.Year2))
+
+      2002       2003       2004       2005 
+0.40816327 0.39795918 0.08163265 0.11224490 
+
+-----
+> prop.table(table(nin$ESRB.Rating2))
+
+     EE10        TM 
+0.7254902 0.2745098 
+> prop.table(table(tpx$ESRB.Rating2))
+
+     EE10        TM 
+0.4805195 0.5194805 
+
+-----
+> prop.table(table(nin$Multiplayer2))
+
+         1          2          4 
+0.41818182 0.09090909 0.49090909 
+> prop.table(table(tpx$Multiplayer2))
+
+        1         2         4 
+0.2959184 0.3367347 0.3673469
+
+
+> cor(x = nin$Metacritic.Score, y = nin$Sales.Total, use = "complete.obs")
+[1] 0.4808942
+> cor(x = tpx$Metacritic.Score, y = tpx$Sales.Total, use = "complete.obs")
+[1] 0.4306915
+
+-----------------------------
+> prop.table(table(nin$Release.Year))
+
+      2001       2002       2003       2004       2005       2006 
+0.09090909 0.20000000 0.29090909 0.18181818 0.20000000 0.03636364 
+> prop.table(table(tpx$Release.Year))
+
+      2001       2002       2003       2004       2005       2006 
+0.05102041 0.35714286 0.39795918 0.08163265 0.10204082 0.01020408 
+> prop.table(table(tpm$Release.Year))
+
+      2001       2002       2003       2004       2005       2006       2007 
+0.02448980 0.25510204 0.27142857 0.16734694 0.18367347 0.08571429 0.01224490 

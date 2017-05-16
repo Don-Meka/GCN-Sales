@@ -1,0 +1,77 @@
+## Recoded Publisher code. Publishers with fewer than 16 games were grouped into other. Highest value is Hudson Soft with 10
+
+Publisher2 <- GCN$Publisher
+Publisher2 <- revalue(Publisher2, c("3DO" = "Other",
+                "Asmik Ace Entertainment" = "Other",  
+                                  "Atlus" = "Other",  
+                     "BAM! Entertainment" = "Other",  
+                              "Banpresto" = "Other",  
+                     "BigBen Interactive" = "Other",  
+                            "Codemasters" = "Other",  
+                    "Crave Entertainment" = "Other",  
+                           "D3 Publisher" = "Other",  
+             "Disney Interactive Studios" = "Other",  
+                      "Eidos Interactive" = "Other",  
+                     "Empire Interactive" = "Other",  
+                                 "Encore" = "Other",  
+                                  "Epoch" = "Other",  
+                           "Game Factory" = "Other",  
+                            "Global Star" = "Other",  
+                           "Gotham Games" = "Other",  
+                            "Hudson Soft" = "Other",  
+                           "Idea Factory" = "Other",  
+                 "Ignition Entertainment" = "Other",  
+               "Infogrames Entertainment" = "Other",  
+                                 "Jaleco" = "Other",  
+                     "JoWood Productions" = "Other",  
+                                  "Kemco" = "Other",  
+                           "Kids Station" = "Other",  
+                              "LucasArts" = "Other",  
+                               "Mad Catz" = "Other",  
+                  "Majesco Entertainment" = "Other",  
+                  "Marvelous Interactive" = "Other",  
+                             "Media Kite" = "Other",  
+                              "Milestone" = "Other",  
+                                "Natsume" = "Other",  
+                        "NDA Productions" = "Other",  
+                       "NEC Interchannel" = "Other",  
+                               "NewKidCo" = "Other",  
+                       "O3 Entertainment" = "Other",  
+                             "Pin Change" = "Other",  
+                          "Rage Software" = "Other",  
+                                    "SCi" = "Other",
+                    "Sunrise Interactive" = "Other",  
+                                  "Taito" = "Other",  
+                                 "Takara" = "Other",  
+                             "Tecmo Koei" = "Other",  
+                                  "Titus" = "Other",  
+                       "Tomy Corporation" = "Other",  
+                  "Universal Interactive" = "Other",  
+                     "Virgin Interactive" = "Other",  
+                                "Wanadoo" = "Other",  
+ "Warner Bros. Interactive Entertainment" = "Other",  
+                      "Xicat Interactive" = "Other",  
+                 "Zoo Digital Publishing" = "Other"))  
+-------------------------------------------------------------
+##Recoded the Genre variable. Collection, Miscellaneous, Music, Party, Puzzle, and Simulation are grouped into "Other."
+
+Genre2 <- GCN$Genre
+Genre2 <- revalue(Genre2, c("Collection" = "Other", "Miscellaneous" = "Other", "Music" = "Other", "Party" = "Other", "Puzzle" = "Other", "Simulation" = "Other", "Strategy" = "Other"))
+------------------------------------------------------------
+##Recoded The Release Year variable. 2001 is now grouped into 2002. 2006 and 2007 are grouped into 2005
+
+Release.Year2 <- GCN$Release.Year
+Release.Year2 <- as.factor(Release.Year2)
+Release.Year2 <- revalue(Release.Year2, c("2001" = "2001/2", "2002" = "2001/2", "2005" = "2005/6/7", "2006" = "2005/6/7", "2007" = "2005/6/7"))
+----------------------------------------------------------------
+##Recoded the ESRB Rating variable. E and E10 are grouped together. T and M are grouped together
+
+ESRB.Rating2 <- GCN$ESRB.Rating    
+ESRB.Rating2 <- revalue(ESRB.Rating2, c("E" = "E/E10", "E10" = "E/E10", "T" = "T/M", "M" = "T/M"))
+
+------------------------------------------------------------------
+##Recoded the Multiplayer variable. The only 3 player game, Harry Potter and the Goblet of Fire, is grouped into 2 player
+
+Multiplayer2 <- GCN$Multiplayer
+Multiplayer2 <- as.factor(Multiplayer2)
+Multiplayer2 <- revalue(Multiplayer2, c("3" = "2"))

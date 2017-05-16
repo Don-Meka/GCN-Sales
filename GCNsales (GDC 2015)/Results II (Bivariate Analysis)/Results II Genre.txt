@@ -1,0 +1,84 @@
+> GCN2gen <- split(GCN2, GCN2$Genre2)
+> sapply(GCN2gen, function(x) colMeans(x[, c("Metacritic.Score", "Sales.N.A.", "Sales.Eur", "Sales.Jap", "Sales.Other", "Sales.Total")], na.rm=TRUE))
+                 ActionAdventure    Fighting       Other  Platformer      Racing RolePlaying     Shooter      Sports
+Metacritic.Score     67.85714286 68.78787879 67.01785714 63.42253521 66.01666667  73.19230769 69.25490196 75.91588785
+Sales.N.A.            0.24319672  0.34593750  0.31016667  0.27853333  0.23076923   0.30370370  0.22461538  0.17046296
+Sales.Eur             0.07791304  0.08906250  0.09169811  0.08563380  0.08981481   0.09692308  0.08860465  0.04927835
+Sales.Jap             0.20875000  0.30750000  0.34619048  0.21428571  0.22428571   0.26300000  0.08000000  0.14818182
+Sales.Other           0.02052632  0.02789474  0.02545455  0.02205882  0.02842105   0.02333333  0.02315789  0.01473684
+Sales.Total           0.35467213  0.46512821  0.48630769  0.38552632  0.33815385   0.48892857  0.31442308  0.22394737
+
+
+> oneway.test(GCN2$Metacritic.Score ~ GCN2$Genre2, var.equal = TRUE)
+
+	One-way analysis of means
+
+data:  GCN2$Metacritic.Score and GCN2$Genre2
+F = 7.6, num df = 7, denom df = 508, p-value = 9.873e-09
+-----
+> oneway.test(GCN2$Sales.N.A. ~ GCN2$Genre2, var.equal = TRUE)
+
+	One-way analysis of means
+
+data:  GCN2$Sales.N.A. and GCN2$Genre2
+F = 1.091, num df = 7, denom df = 533, p-value = 0.3674
+-----
+> oneway.test(GCN2$Sales.Eur ~ GCN2$Genre2, var.equal = TRUE)
+
+	One-way analysis of means
+
+data:  GCN2$Sales.Eur and GCN2$Genre2
+F = 0.7609, num df = 7, denom df = 483, p-value = 0.6204
+-----
+> oneway.test(GCN2$Sales.Jap ~ GCN2$Genre2, var.equal = TRUE)
+
+	One-way analysis of means
+
+data:  GCN2$Sales.Jap and GCN2$Genre2
+F = 1.0432, num df = 7, denom df = 81, p-value = 0.4079
+-----
+> oneway.test(GCN2$Sales.Other ~ GCN2$Genre2, var.equal = TRUE)
+
+	One-way analysis of means
+
+data:  GCN2$Sales.Other and GCN2$Genre2
+F = 0.7763, num df = 7, denom df = 226, p-value = 0.6077
+-----
+> oneway.test(GCN2$Sales.Total ~ GCN2$Genre2, var.equal = TRUE)
+
+	One-way analysis of means
+
+data:  GCN2$Sales.Total and GCN2$Genre2
+F = 1.2954, num df = 7, denom df = 553, p-value = 0.2502
+
+
+
+//////////////////////
+b <- GCN2[which(GCN2$Publisher != "Electronic Arts" | GCN2$Genre != "Sports"), ]
+
+
+ oneway.test(b$Metacritic.Score ~ b$Genre2, var.equal = TRUE)
+
+	One-way analysis of means
+
+data:  b$Metacritic.Score and b$Genre2
+F = 2.7114, num df = 7, denom df = 465, p-value = 0.009173
+
+
+> sapply(bgen, function(x) colMeans(x[, c("Metacritic.Score", "Sales.N.A.", "Sales.Eur", "Sales.Jap", "Sales.Other", "Sales.Total")], na.rm=TRUE))
+                 ActionAdventure    Fighting       Other  Platformer      Racing RolePlaying
+Metacritic.Score     67.85714286 68.78787879 67.01785714 63.42253521 66.01666667 73.19230769
+Sales.N.A.            0.24319672  0.34593750  0.31016667  0.27853333  0.23076923  0.30370370
+Sales.Eur             0.07791304  0.08906250  0.09169811  0.08563380  0.08981481  0.09692308
+Sales.Jap             0.20875000  0.30750000  0.34619048  0.21428571  0.22428571  0.26300000
+Sales.Other           0.02052632  0.02789474  0.02545455  0.02205882  0.02842105  0.02333333
+Sales.Total           0.35467213  0.46512821  0.48630769  0.38552632  0.33815385  0.48892857
+                     Shooter      Sports
+Metacritic.Score 69.25490196 71.04687500
+Sales.N.A.        0.22461538  0.14750000
+Sales.Eur         0.08860465  0.04566038
+Sales.Jap         0.08000000  0.14818182
+Sales.Other       0.02315789  0.01933333
+Sales.Total       0.31442308  0.19842857
+
+

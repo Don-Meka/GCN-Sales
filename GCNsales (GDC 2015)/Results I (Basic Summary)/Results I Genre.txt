@@ -1,0 +1,13 @@
+> summary(GCN2$Genre)
+ActionAdventure      Collection        Fighting   Miscellaneous           Music 
+            136              10              43               7               6 
+          Party      Platformer          Puzzle          Racing    Role-Playing 
+             15              80              15              75              32 
+        Shooter      Simulation          Sports        Strategy 
+             61              11             137              15 
+--------------------------------------------------------
+> summary(GCN2$Genre2)
+ActionAdventure        Fighting           Other      Platformer          Racing 
+            136              43              79              80              75 
+   Role-Playing         Shooter          Sports 
+             32              61             137 
