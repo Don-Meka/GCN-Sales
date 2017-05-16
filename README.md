@@ -1,1 +1,1 @@
-# GCN-Sales
+This was the first data project I did after graduating college. I collected and analyzed data on Nintendo GameCube sales data by throwing every possible statstical test I knew at the time. I'm proud of the work I put into it back then, but looking at it now is like "eww." 
